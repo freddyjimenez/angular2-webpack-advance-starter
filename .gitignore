@@ -84,3 +84,4 @@ dll/
 !/nativescript/references.d.ts
 /desktop/
 yarn-error.log
+package-lock\.json

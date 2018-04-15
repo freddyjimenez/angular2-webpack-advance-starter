@@ -4,7 +4,7 @@ import { ViewEncapsulation, Component, OnInit } from '@angular/core';
 import './operators';
 
 // libs
-import { ConfigService } from '@nglibs/config';
+import { ConfigService } from '@ngx-config/core';
 
 // app
 import { AnalyticsService } from 'shared/analytics/index';
@@ -23,10 +23,10 @@ import { LogService, AppService } from 'shared/core/services/index';
 })
 export class AppComponent implements OnInit {
   constructor(public analytics: AnalyticsService,
-              public log: LogService,
-              public config: ConfigService,
-              public multilang: MultilingualService,
-              private appService: AppService) {
+    public log: LogService,
+    public config: ConfigService,
+    public multilang: MultilingualService,
+    private appService: AppService) {
     log.debug(`Config env: ${Config.ENVIRONMENT().ENV}`);
   }
 

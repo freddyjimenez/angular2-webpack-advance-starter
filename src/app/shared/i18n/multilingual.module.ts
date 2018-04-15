@@ -7,10 +7,11 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   NO_ERRORS_SCHEMA
 } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpModule, Http } from '@angular/http';
+
 
 // libs
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -22,11 +23,11 @@ import { Config } from '../core/index';
 // module
 import { LangSwitcherComponent } from './components/index';
 import { MultilingualService } from './services/index';
-
+import { HttpModule, Http } from '@angular/http';
 // for AoT compilation
 export function translateLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http, `${Config.IS_MOBILE_NATIVE() ?
-     '/' : ''}assets/i18n/`, '.json');
+    '/' : ''}assets/i18n/`, '.json');
 };
 
 /**
@@ -39,11 +40,13 @@ export function translateLoaderFactory(http: Http) {
     RouterModule,
     FormsModule,
     HttpModule,
-    TranslateModule.forRoot([{
-      provide: TranslateLoader,
-      deps: [Http],
-      useFactory: (translateLoaderFactory)
-    }]),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: translateLoaderFactory,
+        deps: [Http]
+      }
+    })
   ],
   declarations: [
     LangSwitcherComponent

@@ -5,7 +5,8 @@ import { Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ConfigModule, ConfigLoader, ConfigStaticLoader } from '@nglibs/config';
+import { ConfigLoader, ConfigModule, ConfigService, ConfigStaticLoader } from '@ngx-config/core';
+import { ConfigHttpLoader } from '@ngx-config/http-loader';
 import { TranslateLoader } from '@ngx-translate/core';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
@@ -47,7 +48,7 @@ export function cons() {
 }
 
 export const ADVANCE_MODULES = [
-  Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+  Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
   ConfigModule.forRoot({
     provide: ConfigLoader,
     useFactory: (configFactory)
